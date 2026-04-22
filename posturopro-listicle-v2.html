@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>I Spent $3,200 Trying to Fix My Posture. Then I Found Out Why Nothing Worked.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #0f0f0f;
+  --white: #fff;
+  --cream: #faf8f4;
+  --warm: #f4efe6;
+  --gold: #b8860b;
+  --gold2: #c8982a;
+  --gold3: #e8b84b;
+  --gray: #6b6b6b;
+  --lgray: #e0dbd2;
+  --red: #c0392b;
+  --green: #27ae60;
+  --text: #1c1c1c;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+/* ── PROGRESS ── */
+.progress-bar {
+  position: fixed; top: 0; left: 0;
+  height: 3px; background: var(--gold2);
+  z-index: 1000; transition: width .1s linear;
+}
+
+/* ── PUB HEADER ── */
+.pub-header {
+  background: var(--white);
+  border-bottom: 2px solid var(--black);
+  padding: 11px 0;
+  text-align: center;
+}
+.pub-name {
+  font-family: 'Lora', serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.pub-tag {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 3px 10px;
+  border: 1px solid var(--gold2);
+  border-radius: 2px;
+}
+
+/* ── ARTICLE ── */
+.article {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── HERO ── */
+.article-hero {
+  padding: 40px 0 28px;
+  border-bottom: 1px solid var(--lgray);
+  margin-bottom: 28px;
+}
+.article-headline {
+  font-family: 'Lora', serif;
+  font-size: clamp(26px, 5vw, 42px);
+  font-weight: 700;
+  line-height: 1.18;
+  color: var(--black);
+  margin-bottom: 18px;
+}
+.article-headline em { font-style: italic; color: var(--gold2); }
+
+.article-deck {
+  font-size: 17px;
+  color: var(--gray);
+  line-height: 1.6;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  margin-bottom: 22px;
+  padding-left: 14px;
+  border-left: 3px solid var(--gold3);
+}
+.byline-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.byline-avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d4a847, #8b6914);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-family: 'Lora', serif;
+  font-size: 16px; flex-shrink: 0;
+}
+.byline-name { font-weight: 700; font-size: 13px; color: var(--black); }
+.byline-meta { color: var(--gray); font-size: 12px; }
+.read-time { margin-left: auto; font-size: 12px; color: var(--gray); }
+
+/* ── PROSE ── */
+.prose { font-size: 17px; line-height: 1.78; color: var(--text); }
+.prose p { margin-bottom: 18px; }
+.prose p:last-child { margin-bottom: 0; }
+.prose strong { font-weight: 700; color: var(--black); }
+.prose em { font-style: italic; }
+
+/* ── IMAGES ── */
+.article-img {
+  margin: 28px -20px;
+}
+@media (min-width: 720px) {
+  .article-img { margin: 28px 0; border-radius: 10px; overflow: hidden; }
+}
+.article-img img { width: 100%; display: block; }
+.img-caption {
+  text-align: center; font-size: 12px; color: var(--gray);
+  font-style: italic; margin-top: 8px; padding: 0 20px;
+}
+
+.img-float {
+  float: right;
+  width: 44%;
+  margin: 4px 0 20px 24px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,.11);
+}
+.img-float img { width: 100%; display: block; }
+@media (max-width: 540px) {
+  .img-float { float: none; width: 100%; margin: 0 0 20px; }
+}
+
+/* ── PULL QUOTE ── */
+.pull-quote {
+  margin: 28px 0;
+  padding: 24px 28px;
+  background: var(--black);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.pull-quote::before {
+  content: '"';
+  position: absolute; top: -14px; left: 18px;
+  font-family: 'Lora', serif; font-size: 110px;
+  color: rgba(232,184,75,.12); line-height: 1;
+  pointer-events: none;
+}
+.pull-quote p {
+  font-family: 'Lora', serif;
+  font-size: clamp(16px, 2.8vw, 21px);
+  font-style: italic; color: var(--white);
+  line-height: 1.5; margin: 0; position: relative; z-index: 1;
+}
+.pull-quote cite {
+  display: block; margin-top: 12px; font-size: 11px;
+  font-style: normal; color: var(--gold3); font-weight: 600;
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box {
+  margin: 24px 0;
+  padding: 20px 24px;
+  background: linear-gradient(135deg, #fdf5e6, #f8e8c0);
+  border: 1.5px solid var(--gold2);
+  border-radius: 8px;
+}
+.highlight-box p {
+  font-family: 'Lora', serif; font-size: 15px;
+  line-height: 1.6; color: #5c4a1a; margin: 0;
+}
+.highlight-box strong { color: var(--gold); }
+
+/* ── LISTICLE ITEMS — inline number + headline ── */
+.list-item {
+  margin: 36px 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--lgray);
+}
+.list-header {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.list-num {
+  font-family: 'Lora', serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold2);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.list-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(19px, 3.2vw, 25px);
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.22;
+}
+.list-title em { color: var(--gold2); font-style: italic; }
+
+/* ── STATS ── */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 22px 0;
+}
+.stat-card {
+  background: var(--cream); border: 1px solid var(--lgray);
+  border-radius: 8px; padding: 16px 12px; text-align: center;
+}
+.stat-num {
+  font-family: 'Lora', serif; font-size: 28px;
+  font-weight: 700; color: var(--black); display: block;
+}
+.stat-lbl { font-size: 11px; color: var(--gray); margin-top: 3px; line-height: 1.35; }
+
+/* ── CHECKLIST ── */
+.checklist {
+  list-style: none; margin: 16px 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.checklist li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 15px; line-height: 1.5;
+  padding: 10px 14px;
+  background: var(--cream); border-radius: 6px;
+  border: 1px solid var(--lgray);
+}
+.checklist li::before {
+  content: '✓'; color: var(--green);
+  font-weight: 800; font-size: 13px;
+  flex-shrink: 0; margin-top: 2px;
+}
+.xlist li::before { content: '✕'; color: var(--red); }
+
+/* ── COMPARISON TABLE ── */
+.comp-table {
+  width: 100%; border-collapse: collapse;
+  margin: 20px 0; border-radius: 8px;
+  overflow: hidden; box-shadow: 0 3px 16px rgba(0,0,0,.07);
+}
+.comp-table thead tr { background: var(--black); color: var(--white); }
+.comp-table thead td { padding: 12px 16px; font-weight: 700; font-size: 13px; letter-spacing: .3px; }
+.comp-table thead td:nth-child(2) { background: var(--gold2); color: var(--black); text-align: center; }
+.comp-table thead td:nth-child(3) { text-align: center; color: #888; }
+.comp-table tbody tr { border-bottom: 1px solid var(--lgray); }
+.comp-table tbody tr:nth-child(even) { background: var(--cream); }
+.comp-table tbody td { padding: 11px 16px; font-size: 14px; }
+.comp-table tbody td:nth-child(2) { text-align: center; font-size: 16px; color: var(--green); font-weight: 800; }
+.comp-table tbody td:nth-child(3) { text-align: center; font-size: 16px; color: var(--red); font-weight: 800; }
+
+/* ── INLINE CTA ── */
+.inline-cta {
+  margin: 32px 0;
+  padding: 24px;
+  border: 2px solid var(--gold2);
+  border-radius: 10px;
+  background: linear-gradient(135deg, #fdf5e6, #f8e8c0);
+  text-align: center;
+}
+.inline-cta p {
+  font-family: 'Lora', serif; font-size: 16px;
+  color: #4a3800; margin-bottom: 14px; line-height: 1.55;
+}
+.inline-cta-btn {
+  display: inline-block; background: var(--black); color: var(--white);
+  padding: 13px 28px; border-radius: 6px; font-size: 14px;
+  font-weight: 700; letter-spacing: .4px; text-decoration: none; transition: .2s;
+}
+.inline-cta-btn:hover { background: #333; }
+
+/* ── MAIN CTA ── */
+.cta-section {
+  margin: 44px 0;
+  background: var(--black);
+  border-radius: 14px;
+  padding: 40px 36px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; top: -50px; right: -50px;
+  width: 180px; height: 180px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,184,75,.15), transparent 70%);
+  pointer-events: none;
+}
+.cta-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gold3); margin-bottom: 12px;
+}
+.cta-headline {
+  font-family: 'Lora', serif;
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 700; color: var(--white);
+  line-height: 1.22; margin-bottom: 10px;
+}
+.cta-sub { font-size: 14px; color: #888; margin-bottom: 24px; line-height: 1.6; }
+.cta-price-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin-bottom: 18px; flex-wrap: wrap;
+}
+.cta-price { font-family: 'Lora', serif; font-size: 40px; font-weight: 700; color: var(--white); }
+.cta-orig { font-size: 18px; text-decoration: line-through; color: #555; }
+.cta-badge {
+  background: var(--red); color: white;
+  font-size: 11px; font-weight: 700;
+  padding: 4px 9px; border-radius: 4px; letter-spacing: .5px;
+}
+.cta-btn {
+  display: block; background: var(--white); color: var(--black);
+  padding: 17px 40px; border-radius: 8px; font-size: 16px;
+  font-weight: 700; letter-spacing: .4px; text-decoration: none;
+  transition: .2s; cursor: pointer; max-width: 380px; margin: 0 auto;
+  animation: pulse-btn 2.5s ease-in-out infinite;
+}
+.cta-btn:hover { background: var(--gold3); animation: none; transform: translateY(-2px); }
+@keyframes pulse-btn {
+  0%,100% { box-shadow: 0 0 0 0 rgba(255,255,255,.2); }
+  50% { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+}
+.cta-guarantee {
+  margin-top: 14px; font-size: 12px; color: #666;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+
+/* ── DISCLAIMER ── */
+.disclaimer {
+  margin: 24px 0;
+  padding: 14px 18px;
+  background: var(--cream);
+  border-left: 3px solid var(--lgray);
+  font-size: 12px; color: var(--gray); line-height: 1.6; font-style: italic;
+}
+
+/* ── AUTHOR BIO ── */
+.author-bio {
+  margin: 36px 0 20px;
+  padding: 20px;
+  background: var(--cream);
+  border: 1px solid var(--lgray);
+  border-radius: 10px;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.bio-avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, #d4a847, #8b6914);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-family: 'Lora', serif;
+  font-size: 20px; flex-shrink: 0;
+}
+.bio-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+.bio-desc { font-size: 13px; color: var(--gray); line-height: 1.55; }
+
+/* ── FOOTER ── */
+.article-footer {
+  padding: 24px 0 80px;
+  border-top: 1px solid var(--lgray);
+  text-align: center;
+  font-size: 11px; color: var(--gray);
+}
+.article-footer a { color: var(--gray); }
+
+/* ── STICKY BAR ── */
+.sticky-cta {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 500; background: var(--black);
+  padding: 13px 20px;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 14px;
+  transform: translateY(100%); transition: transform .3s ease;
+  border-top: 1px solid #222;
+}
+.sticky-cta.show { transform: translateY(0); }
+.sticky-left { color: var(--white); font-size: 14px; font-weight: 600; }
+.sticky-left span { color: var(--gold3); display: block; font-size: 11px; font-weight: 400; }
+.sticky-btn {
+  background: var(--white); color: var(--black);
+  padding: 10px 22px; border-radius: 6px;
+  font-size: 13px; font-weight: 700;
+  text-decoration: none; white-space: nowrap; flex-shrink: 0;
+}
+
+@media (max-width: 540px) {
+  .article { padding: 0 16px; }
+  .cta-section { padding: 30px 20px; }
+  .stat-row { gap: 8px; }
+  .stat-num { font-size: 24px; }
+  .read-time { margin-left: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="pub-header">
+  <div class="pub-name">The Desk Worker's Health Journal</div>
+  <div><span class="pub-tag">Back &amp; Posture</span></div>
+</div>
+
+<article class="article">
+
+  <header class="article-hero">
+    <h1 class="article-headline">
+      I Spent $3,200 Trying to Fix My Posture.<br>
+      <em>Then I found out why nothing was ever going to work.</em>
+    </h1>
+    <p class="article-deck">
+      Six years of chiropractors, braces, and YouTube routines — all useless. A physio finally explained the real problem in one sentence.
+    </p>
+    <div class="byline-row">
+      <div class="byline-avatar">M</div>
+      <div>
+        <div class="byline-name">Mike Wood</div>
+        <div class="byline-meta">Project Manager · London</div>
+      </div>
+      <div class="read-time">⏱ 5 min read</div>
+    </div>
+  </header>
+
+  <!-- OPENING IMAGE — pain hook -->
+  <div class="article-img">
+    <img src="hf_20260421_232313_7bd31617-a236-48ad-95ce-6571002164c3.png" alt="Desk worker holding neck in pain">
+  </div>
+
+  <div class="prose">
+    <p>Let me start with a number: <strong>$3,247.</strong></p>
+    <p>That's what I spent over six years trying to fix my posture. Chiropractor visits. A standing desk I used twice. Three Amazon braces I returned. YouTube stretch routines I quit by day four.</p>
+    <p>None of it worked. Not for long, anyway.</p>
+    <p>I'm 34. I've been at a desk 9 hours a day since I was 26. And for most of that time, I blamed myself. Not enough willpower. Not consistent enough. If I just tried harder, it would work.</p>
+    <p>Then a physio said something that changed everything. One sentence. And suddenly six years of failure made complete sense.</p>
+  </div>
+
+  <div class="pull-quote">
+    <p>"Your muscles haven't just weakened. They've been reprogrammed into the wrong position. Willpower can't override thousands of hours of physical conditioning."</p>
+    <cite>— The physio appointment that changed everything</cite>
+  </div>
+
+  <div class="prose">
+    <p>I asked the obvious follow-up: <em>So what actually fixes it?</em></p>
+    <p>The answer was simpler than I expected. But first — here's what I wish I'd known before I wasted all that money.</p>
+  </div>
+
+  <!-- ITEM 1 -->
+  <div class="list-item">
+    <div class="list-header">
+      <span class="list-num">No. 1</span>
+      <h2 class="list-title">Your desk job literally reprogrammed your muscles. <em>It's not laziness.</em></h2>
+    </div>
+    <div class="prose">
+      <p>When you sit hunched for 8–10 hours a day, year after year, your body adapts. It learns what position you spend the most time in — and starts treating that as <em>normal.</em></p>
+      <p>Researchers call it postural muscle conditioning. I think of it as <strong>Muscle Amnesia</strong> — your muscles forget where they're supposed to be.</p>
+
+      <div class="article-img">
+        <img src="concept11.png" alt="Postural Muscle Amnesia — reprogrammed wrong vs retrained correctly">
+        <p class="img-caption">Why "just sit up straight" stops working after about 4 minutes.</p>
+      </div>
+
+      <p>This is why "just sit up straight" doesn't stick. The moment you stop thinking about it — about 4 minutes later — your body snaps right back to its default. Not because you're weak. <strong>Because your nervous system is doing exactly what it was trained to do.</strong></p>
+      <p>This is not a discipline problem. It's a reprogramming problem. And those need very different solutions.</p>
+    </div>
+  </div>
+
+  <!-- ITEM 2 -->
+  <div class="list-item">
+    <div class="list-header">
+      <span class="list-num">No. 2</span>
+      <h2 class="list-title">Chiropractors and exercises treat the symptom. <em>Not the cause.</em></h2>
+    </div>
+    <div class="prose">
+      <p>Chiro sessions helped — for about 48 hours. Then I'd sit back at my desk and within a week, everything was the same as before. I'd go back, pay another $95, feel better for two days. Repeat until I'd spent over $800.</p>
+      <p>Same with stretching. It relieved the tension. But it never changed the underlying pattern — the default my muscles kept snapping back to.</p>
+
+      <div class="highlight-box">
+        <p>Every solution I tried required me to <strong>actively fight</strong> my body's default. But you can't correct your posture consciously for 8 hours a day. You'd never get anything done.</p>
+      </div>
+
+      <p>I didn't need something that temporarily relieved the tension. I needed something that would change the default position itself — while I got on with my day.</p>
+
+      <ul class="xlist checklist">
+        <li>Chiropractor — relief lasts 1–2 days, body returns to same pattern</li>
+        <li>Stretch routines — work in the moment, can't do them all day</li>
+        <li>Foam rollers — treat the symptom, not the root cause</li>
+        <li>Standing desks — great if you actually stand. Most people don't.</li>
+        <li>Cheap braces worn all day — can actually weaken muscles further</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ITEM 3 -->
+  <div class="list-item">
+    <div class="list-header">
+      <span class="list-num">No. 3</span>
+      <h2 class="list-title">The real fix is passive retraining. <em>60 minutes a day is enough.</em></h2>
+    </div>
+    <div class="prose">
+      <div class="img-float">
+        <img src="concept4.png" alt="Before and after posture — 30 days">
+      </div>
+      <p>Once I understood Muscle Amnesia, the solution followed naturally. If the wrong position was learned through thousands of hours of repetition, the right position needs to be taught the same way — <strong>passively, consistently, until the nervous system accepts it as the new normal.</strong></p>
+      <p>Think of it like a broken bone. You don't fix a fracture with willpower. You put a cast on it and let it heal in the correct position. Nobody thinks you're weak for wearing a cast.</p>
+      <p>The physio's advice: don't try to sit up straight. Instead, passively hold the correct position for 60–90 minutes a day until your muscles learn it on their own.</p>
+
+      <div class="stat-row">
+        <div class="stat-card"><span class="stat-num">60</span><div class="stat-lbl">mins/day is all it takes</div></div>
+        <div class="stat-card"><span class="stat-num">2 wks</span><div class="stat-lbl">avg. time to notice results</div></div>
+        <div class="stat-card"><span class="stat-num">30</span><div class="stat-lbl">days to lasting muscle memory</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INLINE CTA -->
+  <div class="inline-cta">
+    <p>The product that helped me apply this method is called <strong>PosturePro</strong>. 60–90 minutes a day. No exercises. No appointments. I'll tell you exactly what happened below.</p>
+    <a href="https://fitnesscareshop.com/products/posture-corrector" class="inline-cta-btn">→ See PosturePro — 50% Off Today</a>
+  </div>
+
+  <!-- ITEM 4 -->
+  <div class="list-item">
+    <div class="list-header">
+      <span class="list-num">No. 4</span>
+      <h2 class="list-title">Most braces make things worse — <em>unless you use them this way.</em></h2>
+    </div>
+    <div class="prose">
+      <p>My first two Amazon braces? One dug into my armpits and left marks. The other made me sweat constantly. Both returned within a week.</p>
+      <p>But there was also a bigger problem: I was wearing them all day, every day. That approach actually makes your muscles more dependent, not less. The brace does all the work and your muscles switch off.</p>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <td>Feature</td>
+            <td>✦ PosturePro</td>
+            <td>Typical Brace</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>60–90 min retraining method</td><td>✓</td><td>✕</td></tr>
+          <tr><td>Trains muscles (not replaces them)</td><td>✓</td><td>✕</td></tr>
+          <tr><td>Upper + lower back support</td><td>✓</td><td>✕</td></tr>
+          <tr><td>Invisible under a work shirt</td><td>✓</td><td>✕</td></tr>
+          <tr><td>No armpit digging</td><td>✓</td><td>✕</td></tr>
+          <tr><td>Breathable — no sweating</td><td>✓</td><td>✕</td></tr>
+          <tr><td>Easy to put on alone</td><td>✓</td><td>✕</td></tr>
+        </tbody>
+      </table>
+
+      <p>The method that actually works: short, daily sessions — 60 to 90 minutes, not all day. Long enough to trigger retraining. Short enough that your muscles stay active and get stronger.</p>
+
+      <ul class="checklist">
+        <li>Start at 30 mins/day, add 10 mins every few days</li>
+        <li>Wear during a consistent daily block — morning works best</li>
+        <li>After 30 days, reduce wear time — muscles should hold it themselves</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ITEM 5 -->
+  <div class="list-item">
+    <div class="list-header">
+      <span class="list-num">No. 5</span>
+      <h2 class="list-title">The change you won't expect: <em>it's bigger than the back pain.</em></h2>
+    </div>
+    <div class="prose">
+      <div class="article-img">
+        <img src="hf_20260421_232942_919bf384-df7a-4ff6-b468-9fe60fc6be02.png" alt="Day 0 vs Day 30 — it's not just the posture that changed">
+        <p class="img-caption">Day 0 vs. Day 30. It's not just the posture that changed.</p>
+      </div>
+
+      <p>By week three, something happened I wasn't expecting. I was in a team meeting and a colleague said: <em>"You seem really on today."</em></p>
+      <p>I'd been sitting differently for about 10 days. The neck pain had dropped a lot. But the comment wasn't about pain. It was about how I was <em>showing up.</em></p>
+      <p>The research backs this up: posture directly affects how you come across — and how you feel inside. When you carry yourself upright, your brain registers it as confidence. When you're collapsed forward, it registers that too.</p>
+
+      <div class="pull-quote">
+        <p>"My back pain is 95% gone. But honestly, that's become secondary. The real change is how I walk into a room now."</p>
+        <cite>— Mike W., 34, London · Project Manager</cite>
+      </div>
+
+      <p>By day 30, I was sitting upright even when not wearing the brace. The neck pain that had followed me for six years was mostly gone. But the bigger shift was this quiet sense of just… being comfortable in my own body. Not thinking about how I was sitting. Not wondering if I looked tired.</p>
+
+      <div class="article-img">
+        <img src="concept13.png" alt="Mike W — Project Manager, 6 years at a desk">
+      </div>
+
+      <p>Standing in the kitchen. Walking into a meeting. Catching my reflection and not immediately looking away.</p>
+      <p>The posture fixed. The confidence came with it. That one I didn't see coming.</p>
+
+      <div class="article-img">
+        <img src="concept7.png" alt="Walk into every room like you belong there.">
+        <p class="img-caption">"Walk into every room like you belong there." — the result nobody talks about.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT SECTION -->
+  <div class="list-item">
+    <div class="list-header">
+      <span class="list-num">Bottom line</span>
+      <h2 class="list-title">PosturePro — my honest take.</h2>
+    </div>
+    <div class="prose">
+      <p>I was skeptical. I'd already returned two braces. But the framing was different: not "wear this all day," but "60–90 minutes, passively retrain your muscles." That made sense to me.</p>
+      <p>A few things that surprised me:</p>
+
+      <ul class="checklist">
+        <li>Actually comfortable — no digging, no sweating, nothing like the ones I returned</li>
+        <li>Fits invisibly under a regular work shirt — I forgot I had it on during a video call</li>
+        <li>Supports upper AND lower back at the same time — most braces only do one</li>
+        <li>30-day money-back, no return shipping — there's no real risk in trying it</li>
+      </ul>
+
+      <div class="article-img">
+        <img src="concept20.png" alt="Week 4 — he stopped noticing he was wearing it">
+        <p class="img-caption">Week 4. He stopped noticing he was wearing it.</p>
+      </div>
+
+      <p>Honestly? I wish I'd spent $44 on this four years ago instead of $3,200 on everything else. Not because it's magic. But because it's the first thing I tried that was solving the actual problem.</p>
+    </div>
+  </div>
+
+  <!-- MAIN CTA -->
+  <div class="cta-section">
+    <div class="cta-eyebrow">Limited Time — 50% Off</div>
+    <h2 class="cta-headline">Try PosturePro Free for 30 Days</h2>
+    <p class="cta-sub">60–90 minutes a day. No exercises. No appointments.<br>If it doesn't work — full refund. No return shipping needed.</p>
+    <div class="cta-price-row">
+      <span class="cta-orig">$89.99</span>
+      <span class="cta-price">$44.99</span>
+      <span class="cta-badge">SAVE 50%</span>
+    </div>
+    <a href="https://fitnesscareshop.com/products/posture-corrector" class="cta-btn">🛒 Get 50% Off — Claim My Discount</a>
+    <div class="cta-guarantee">🛡️ 30-Day Money Back &nbsp;·&nbsp; No Return Shipping &nbsp;·&nbsp; Secure Checkout</div>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclosure:</strong> This article contains affiliate links. The author receives a commission if you buy through the link above. All views are the author's own from personal experience. Results vary.
+  </div>
+
+  <div class="author-bio">
+    <div class="bio-avatar">M</div>
+    <div>
+      <div class="bio-name">Mike Wood</div>
+      <div class="bio-desc">Project manager in London. Has worked desk jobs since 2018 and dealt with chronic neck pain before finding a solution that actually lasted. Writes occasionally about health and things that helped him.</div>
+    </div>
+  </div>
+
+</article>
+
+<footer class="article-footer">
+  <div style="max-width:680px;margin:0 auto;padding:0 20px">
+    <p>© 2025 The Desk Worker's Health Journal &nbsp;·&nbsp; <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a></p>
+    <p style="margin-top:6px">Content is for informational purposes only and is not medical advice.</p>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-left">
+    PosturePro — 50% Off Today
+    <span>30-Day Money Back · No Return Shipping</span>
+  </div>
+  <a href="https://fitnesscareshop.com/products/posture-corrector" class="sticky-btn">Get 50% Off →</a>
+</div>
+
+<script>
+// Progress bar
+const bar = document.getElementById('progressBar');
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+  bar.style.width = (pct * 100) + '%';
+});
+
+// Sticky CTA
+const sticky = document.getElementById('stickyCta');
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+  sticky.classList.toggle('show', pct > 0.2);
+});
+
+// Scroll fade-in
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.list-item, .pull-quote, .highlight-box, .cta-section').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity .55s ease, transform .55s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
