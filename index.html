@@ -1,6 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- ═══════════════════════════════════════
+     META PIXEL — ersetze DEINE_PIXEL_ID (2053474002253357)
+     ═══════════════════════════════════════ -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2053474002253357');
+fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2053474002253357&ev=PageView&noscript=1"/>
+</noscript>
+
+<!-- ═══════════════════════════════════════
+     MICROSOFT CLARITY — ersetze DEINE_CLARITY_ID (wdtsvg0sp8)
+     ═══════════════════════════════════════ -->
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){
+  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window,document,"clarity","script","wdtsvg0sp8");
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>I Spent $3,200 Trying to Fix My Posture. Then I Found Out Why Nothing Worked.</title>
@@ -719,6 +750,17 @@ document.querySelectorAll('.list-item, .pull-quote, .highlight-box, .cta-section
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity .55s ease, transform .55s ease';
   obs.observe(el);
+});
+</script>
+<!-- Meta Pixel — CTA Click Events -->
+<script>
+document.querySelectorAll('.inline-cta-btn, .cta-btn, .sticky-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    fbq('track', 'ViewContent', {
+      content_name: 'PosturePro Advertorial',
+      content_category: 'advertorial'
+    });
+  });
 });
 </script>
 </body>
